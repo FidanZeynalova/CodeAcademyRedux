@@ -1,10 +1,10 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { completeToDo, deleteToDo } from '../App/Slices/ToDoSlices'
-import  Swal  from 'sweetalert2';
+import Swal from 'sweetalert2';
 
 
-function ToDo({af}) {
+function ToDo({ af }) {
   let dispatch = useDispatch()
 
   function handleDelete(id) {
@@ -18,7 +18,7 @@ function ToDo({af}) {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-    dispatch(deleteToDo(id))
+        dispatch(deleteToDo(id))
         Swal.fire({
           title: "Deleted!",
           text: "Your file has been deleted.",
@@ -28,7 +28,7 @@ function ToDo({af}) {
     });
   }
   return (
-      <li key={af.id} ><span style={{ textDecoration:  af.isComplete ? "line-through" : ""}}>{af.todo} </span> <button onClick={()=>handleDelete(af.id)} >Delete</button> <button onClick={()=>dispatch(completeToDo(af.id))}>{af.isComplete ? 'uncomplete' : "complete"}</button></li>
+    <li key={af.id} ><span style={{ textDecoration: af.isComplete ? "line-through" : "" }}>{af.todo} </span> <button onClick={() => handleDelete(af.id)} >Delete</button> <button onClick={() => dispatch(completeToDo(af.id))}>{af.isComplete ? 'uncomplete' : "complete"}</button></li>
   )
 }
 
